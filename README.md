@@ -4,6 +4,16 @@
 
 五个独立的 Remotion 镜头动效，以及直接运行同一套组件的交互预览。播放、慢放、暂停、逐帧查看，拖动分界线比较原镜头与加入动效后的画面。调整文字、颜色、强度和位置时立即看到变化。
 
+## 先看效果
+
+| 标题冲入 | 机械细节标注 |
+| --- | --- |
+| ![标题冲入循环演示](./previews/title.gif) | ![机械细节标注循环演示](./previews/callout.gif) |
+| **甩镜转场** | **速度线** |
+| ![甩镜转场循环演示](./previews/whip.gif) | ![速度线循环演示](./previews/speed.gif) |
+| **Logo 金属扫光** | **交互调整** |
+| ![Logo 扫光循环演示](./previews/logo.gif) | [打开实验室](https://liu2026liu123-cyber.github.io/moto-motion-lab/)，试试慢放、逐帧、前后对比与实时改字改色。 |
+
 | 动效 | 组件 | 可以调整 |
 | --- | --- | --- |
 | 标题冲入 | `TitleSlam` | 主副标题、短句、背景、颜色、冲入强度 |
@@ -67,7 +77,7 @@ git commit -m "Update motion preview"
 git push
 ```
 
-GitHub Pages 使用 `main` 分支的 `/docs` 目录。网页无需服务端。
+GitHub Actions 在 `main` 更新时发布 `/docs` 中的已构建页面。网页无需服务端。
 
 ## 素材说明
 
