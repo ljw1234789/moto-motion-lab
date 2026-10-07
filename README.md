@@ -2,11 +2,11 @@
 
 **五个可复用动效 · 实时调参 · 逐帧对比**
 
-**公开交互网页：[打开机车镜头动效库](https://moto-motion-lab.liu2026liu123.chatgpt.site)**
+**GitHub Pages 交互网页：[打开机车镜头动效库](https://ljw1234789.github.io/moto-motion-lab/)**
 
 无需安装即可观看五个动效，支持慢放、逐帧、前后对比和实时调整。点击「复制分享链接」可直接分享所选动效；本地预览仍可双击 `打开机车动效实验室.command` 启动。
 
-当前 GitHub Actions 接口返回 `Actions has been disabled for this user`，所以公开网页通过 Sites 托管。源代码正常保存在本仓库。
+网页与五个动效的源码保存在本仓库。GitHub Actions 会在 `main` 更新时发布 `docs/` 中的已构建页面。
 
 五个独立的 Remotion 镜头动效，以及直接运行同一套组件的交互预览。播放、慢放、暂停、逐帧查看，拖动分界线比较原镜头与加入动效后的画面。调整文字、颜色、强度和位置时立即看到变化。
 
