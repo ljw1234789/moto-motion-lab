@@ -1,15 +1,17 @@
 import React,{useEffect,useRef,useState} from 'react';
+import {flushSync} from 'react-dom';
 import {Player,PlayerRef} from '@remotion/player';
 import {Preview,EffectKey,Settings,effects,getDefaults} from './Preview';
 
-const repo='https://github.com/liu2026liu123-cyber/moto-motion-lab';
 const icons=['↗','◎','⇢','≋','✦'];
+const requestedEffect=new URLSearchParams(window.location.search).get('effect');
+const initialEffect:EffectKey=effects.find(e=>e.key===requestedEffect)?.key??'title';
 
 const Range:React.FC<{label:string;value:number;min:number;max:number;step?:number;suffix?:string;onChange:(v:number)=>void}> = ({label,value,min,max,step=1,suffix='',onChange}) => <label className="field range-field"><span>{label}<b>{Number(value.toFixed(2))}{suffix}</b></span><input type="range" min={min} max={max} step={step} value={value} onChange={e=>onChange(Number(e.target.value))}/></label>;
 
 export const App:React.FC=()=>{
-  const [selected,setSelected]=useState<EffectKey>('title');
-  const [settings,setSettings]=useState<Settings>(getDefaults('title'));
+  const [selected,setSelected]=useState<EffectKey>(initialEffect);
+  const [settings,setSettings]=useState<Settings>(getDefaults(initialEffect));
   const [comparison,setComparison]=useState(false);
   const [split,setSplit]=useState(65);
   const [frame,setFrame]=useState(0);
@@ -18,6 +20,8 @@ export const App:React.FC=()=>{
   const [loop,setLoop]=useState(true);
   const [notice,setNotice]=useState('');
   const [fileName,setFileName]=useState('');
+  const [shareUrl,setShareUrl]=useState('');
+  const [shareMessage,setShareMessage]=useState('');
   const player=useRef<PlayerRef>(null),fileInput=useRef<HTMLInputElement>(null);
   const uploaded=useRef<string|null>(null);
   const current=effects.find(e=>e.key===selected)!;
@@ -30,7 +34,15 @@ export const App:React.FC=()=>{
   },[selected]);
   useEffect(()=>()=>{if(uploaded.current)URL.revokeObjectURL(uploaded.current);},[]);
   const patch=(key:string,value:string|number)=>setSettings(old=>({...old,[key]:value}));
-  const choose=(key:EffectKey)=>{setSelected(key);setSettings(getDefaults(key));setFrame(0);setPlaying(true);setNotice('');setFileName('');};
+  const choose=(key:EffectKey)=>{setSelected(key);setSettings(getDefaults(key));setFrame(0);setPlaying(true);setNotice('');setFileName('');const url=new URL(window.location.href);url.searchParams.set('effect',key);window.history.replaceState(null,'',url);};
+  const share=async()=>{const url=new URL(window.location.href);url.search='';url.searchParams.set('effect',selected);setShareUrl(url.href);setShareMessage('可复制下方链接，分享当前动效。');try{await navigator.clipboard.writeText(url.href);setShareMessage('链接已复制，打开后会直接显示这个动效。');}catch{/* 链接输入框始终可手动复制。 */}};
+  useEffect(()=>{
+    const context=(document as Document & {modelContext?:{registerTool:(tool:unknown,options:{signal:AbortSignal})=>void|Promise<void>}}).modelContext;
+    if(!context?.registerTool)return;
+    const lifecycle=new AbortController();
+    try{void Promise.resolve(context.registerTool({name:'select_motion_effect',title:'选择镜头动效',description:'切换并播放指定的镜头动效，恢复该动效的默认参数。',inputSchema:{type:'object',properties:{effect:{type:'string',enum:effects.map(e=>e.key)}},required:['effect'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute(input:unknown){if(!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).length!==1||!('effect' in input)||!effects.some(e=>e.key===input.effect))throw new Error('effect 必须为 title、callout、whip、speed 或 logo。');const effect=(input as {effect:EffectKey}).effect;flushSync(()=>choose(effect));return {effect,name:effects.find(e=>e.key===effect)!.name,playing:true};}},{signal:lifecycle.signal})).catch(()=>{});}catch{/* 普通浏览器仍可使用完整界面。 */}
+    return()=>lifecycle.abort();
+  },[]);
   const seek=(n:number)=>{player.current?.pause();player.current?.seekTo(Math.max(0,Math.min(current.frames-1,n)));};
   const text=(key:string,label:string,maxLength=40)=><label className="field"><span>{label}</span><input type="text" value={String(settings[key]??'')} maxLength={maxLength} onChange={e=>patch(key,e.target.value)}/></label>;
   const range=(key:string,label:string,min:number,max:number,step=1,suffix='')=><Range label={label} value={Number(settings[key])} min={min} max={max} step={step} suffix={suffix} onChange={v=>patch(key,v)}/>;
@@ -47,7 +59,8 @@ export const App:React.FC=()=>{
     uploaded.current=URL.createObjectURL(file);patch(selected==='logo'?'logo':selected==='whip'?'before':'background',uploaded.current);setFileName(file.name);setNotice('图片已替换，仅保留在你的浏览器里。');
   };
   return <div className="app-shell">
-    <header className="topbar"><a className="brand" href="./"><span className="brand-mark">M<span>↗</span></span><div><strong>MOTO MOTION LAB</strong><small>机车动效实验室</small></div></a><div className="header-right"><span className="live-badge"><i/>交互预览</span><a className="source-link" href={repo} target="_blank" rel="noreferrer">GitHub 源码 <span>↗</span></a></div></header>
+    <header className="topbar"><a className="brand" href="./"><span className="brand-mark">M<span>↗</span></span><div><strong>MOTO MOTION LAB</strong><small>机车镜头动效库</small></div></a><div className="header-right"><span className="live-badge"><i/>交互预览</span><button className="source-link" onClick={share}>复制分享链接 <span>↗</span></button></div></header>
+    {shareUrl&&<div className="share-feedback" role="status"><span>{shareMessage}</span><input aria-label="当前动效分享链接" readOnly value={shareUrl}/></div>}
     <section className="intro"><div><p className="eyebrow">FIVE EFFECTS. ONE PLAYGROUND.</p><h1>动效怎么变，<em>直接看。</em></h1><p className="intro-copy">播放、暂停、逐帧对比。把参数调成你想要的样子。</p></div><div className="intro-number"><span>05</span><small>可复用镜头动效</small></div></section>
     <main className="workspace">
       <nav className="effect-list" aria-label="选择动效"><div className="section-label">动效库 <span>01 — 05</span></div>{effects.map((e,i)=><button key={e.key} className={`effect-card ${selected===e.key?'active':''}`} aria-pressed={selected===e.key} onClick={()=>choose(e.key)}><span className="effect-icon">{icons[i]}</span><span className="effect-title"><strong>{e.name}</strong><small>{e.en}</small></span><span className="effect-number">0{i+1}</span></button>)}<div className="library-note"><i/>五个模板使用同一套源代码实时预览。</div></nav>
