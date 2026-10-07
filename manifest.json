@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "audio": "silent",
+  "effects": [
+    {
+      "key": "title",
+      "composition": "Moto-Title",
+      "name": "01-标题冲入",
+      "durationSeconds": 4,
+      "config": "config/title.json",
+      "preview": "exports/01-标题冲入-可复用预览.mp4",
+      "overlay": "exports/01-标题冲入-透明叠加.mov",
+      "overlayRole": "ready-to-composite"
+    },
+    {
+      "key": "callout",
+      "composition": "Moto-Callout",
+      "name": "02-机械细节标注",
+      "durationSeconds": 4,
+      "config": "config/callout.json",
+      "preview": "exports/02-机械细节标注-可复用预览.mp4",
+      "overlay": "exports/02-机械细节标注-透明叠加.mov",
+      "overlayRole": "ready-to-composite"
+    },
+    {
+      "key": "whip",
+      "composition": "Moto-Whip",
+      "name": "03-甩镜转场",
+      "durationSeconds": 3,
+      "config": "config/whip.json",
+      "preview": "exports/03-甩镜转场-可复用预览.mp4",
+      "overlay": "exports/03-甩镜转场-配套透明遮罩.mov",
+      "overlayRole": "companion-cover-only"
+    },
+    {
+      "key": "speed",
+      "composition": "Moto-Speed",
+      "name": "04-速度线",
+      "durationSeconds": 4,
+      "config": "config/speed.json",
+      "preview": "exports/04-速度线-可复用预览.mp4",
+      "overlay": "exports/04-速度线-透明叠加.mov",
+      "overlayRole": "ready-to-composite"
+    },
+    {
+      "key": "logo",
+      "composition": "Moto-Logo",
+      "name": "05-Logo金属扫光",
+      "durationSeconds": 4,
+      "config": "config/logo.json",
+      "preview": "exports/05-Logo金属扫光-可复用预览.mp4",
+      "overlay": "exports/05-Logo金属扫光-透明叠加.mov",
+      "overlayRole": "ready-to-composite"
+    }
+  ]
+}

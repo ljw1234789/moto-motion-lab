@@ -1,0 +1,28 @@
+{
+  "name": "moto-motion-lab",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts --port=3019 --no-open",
+    "render": "node scripts/render.mjs",
+    "typecheck": "tsc --noEmit",
+    "build": "node scripts/build-web.mjs",
+    "dev": "node scripts/serve-web.mjs"
+  },
+  "dependencies": {
+    "remotion": "4.0.533",
+    "@remotion/cli": "4.0.533",
+    "@remotion/bundler": "4.0.533",
+    "@remotion/renderer": "4.0.533",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "@remotion/player": "4.0.533"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "esbuild": "0.28.1"
+  }
+}

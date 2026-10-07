@@ -1,0 +1,12 @@
+{
+  "color": "#e10600",
+  "intensity": 1,
+  "duration": 4,
+  "background": "assets/brand-racing.mp4",
+  "centerX": 960,
+  "centerY": 540,
+  "density": 42,
+  "speed": 78,
+  "opacity": 0.75,
+  "backgroundStart": 90
+}

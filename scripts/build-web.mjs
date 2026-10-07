@@ -1,0 +1,11 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {build} from 'esbuild';
+const root=process.cwd();
+const out=path.join(root,'docs');
+await fs.mkdir(out,{recursive:true});
+await build({entryPoints:[path.join(root,'web/main.tsx')],bundle:true,format:'esm',target:['es2022'],minify:true,outfile:path.join(out,'app.js'),define:{'process.env.NODE_ENV':'"production"'},logLevel:'info'});
+await fs.copyFile(path.join(root,'web/index.html'),path.join(out,'index.html'));
+await fs.cp(path.join(root,'public'),out,{recursive:true});
+await fs.writeFile(path.join(out,'.nojekyll'),'');
+console.log('Built interactive preview in docs/');

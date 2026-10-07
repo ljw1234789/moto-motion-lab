@@ -1,0 +1,12 @@
+{
+  "color": "#e10600",
+  "intensity": 1,
+  "duration": 4,
+  "label": "制动卡钳",
+  "caption": "ENGINEERED FOR MOTION",
+  "background": "assets/brake.jpg",
+  "anchorX": 900,
+  "anchorY": 470,
+  "labelX": 1700,
+  "labelY": 560
+}
