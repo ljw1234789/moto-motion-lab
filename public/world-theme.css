@@ -1,0 +1,119 @@
+/* Dusk menu theme. UI colors only; source layout and media unchanged. */
+:root{color:#f4e7dd;background:#1d1721}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #9c697a}
+a{color:inherit}
+button{color:inherit}
+.topbar{border-bottom:1px solid var(--border)}
+.brand-mark{background:#302438}
+.brand small{color:var(--muted)}
+.live-badge{color:#bba5c6}
+.live-badge i,.library-note i,footer i{background:#704557}
+.source-link{border:1px solid #65516e}
+.source-link:hover{background:#1d1721}
+.eyebrow{color:#bba5c6}
+.intro h1 em{color:var(--red)}
+.intro-copy{color:#bba5c6}
+.intro-number span{color:#f4e7dd}
+.intro-number small{color:#bba5c6}
+.section-label{color:#bba5c6}
+.section-label span{color:#bba5c6}
+.effect-card{background:transparent;border:1px solid transparent}
+.effect-card:hover{background:#1d1721}
+.effect-card.active{background:#1d1721;border-color:#9c697a}
+.effect-card.active:before{background:var(--red)}
+.effect-icon{color:#bba5c6}
+.active .effect-icon{color:#ffaaa4}
+.effect-title small{color:#bba5c6}
+.effect-number{color:#bba5c6}
+.active .effect-number{color:#ffaaa4}
+.library-note{border-top:1px solid #65516e;color:#bba5c6}
+.library-note i{background:#513a5e}
+.mini-tag{background:#302438;border:1px solid #65516e;color:#bba5c6}
+.view-switch{background:#1d1721;border:1px solid #65516e}
+.view-switch button{background:transparent;border:0;color:#bba5c6}
+.view-switch .selected{background:#302438;color:#f4e7dd}
+.player-wrap{border:1px solid #65516e;background:#1d1721}
+.stage-corner{background:#1d172166;color:#f4e7dd}
+.player-error small{color:#bba5c6}
+.comparison-bar{color:#bba5c6}
+.transport{border-bottom:1px solid #65516e}
+.transport button{border:0}
+.play-button{background:#704557;color:#f4e7dd}
+.play-button:hover{background:#704557}
+.step-button{background:transparent;color:#bba5c6}
+.timecode{color:#f4e7dd}
+.timecode small{color:#bba5c6}
+.transport select{background:#1d1721;color:#f4e7dd;border:1px solid #65516e}
+.loop-button{background:transparent;color:#bba5c6}
+.loop-button.on{color:#ffaaa4}
+.beat-row>span:first-child{color:#bba5c6}
+.beat-row button{border:1px solid #65516e;background:#1d1721}
+.beat-row button:hover{border-color:#9c697a;background:#1d1721}
+.beat-row small{color:#bba5c6}
+.frame-counter{color:#bba5c6}
+.effect-description{color:#bba5c6}
+.whip-note{color:#bba5c6}
+.settings-panel{background:#1d1721;border:1px solid #65516e}
+.settings-heading{border-bottom:1px solid #65516e}
+.settings-heading .section-label{color:#bba5c6}
+.reset-button{background:transparent;border:0;color:#bba5c6}
+.reset-button:hover{color:#f4e7dd}
+.field>span{color:#bba5c6}
+.field b{color:#f4e7dd}
+.field input[type=text],.field select{background:#1d1721;color:#f4e7dd;border:1px solid #65516e}
+.field input[type=text]:focus,.field select:focus{border-color:#9c697a;outline:none}
+input[type=range]{background:#302438;accent-color:#ffc494}
+input[type=range]::-webkit-slider-thumb{background:#302638}
+input[type=range]::-moz-range-thumb{background:#302638;border:0}
+.swatch{border:0}
+.color-row input{border:1px solid #65516e;background:none}
+.replace-area{border-top:1px solid #65516e}
+.replace-area button{background:#1d1721;border:1px dashed #65516e;color:#bba5c6}
+.replace-area button:hover{border-color:#9c697a;color:#f4e7dd}
+.replace-area small{color:#bba5c6}
+.settings-footer{border-top:1px solid #65516e}
+.download-button{background:#392d43;border:0;color:#f4e7dd}
+.download-button:hover{background:#302638}
+.settings-footer p{color:#bba5c6}
+.notice{color:#f4e7dd}
+footer{border-top:1px solid #65516e;color:#bba5c6}
+footer i{background:#302438}
+footer b{color:#f4e7dd}
+@media(max-width:700px){.effect-card{border-color:#65516e}}
+.source-link{background:transparent}
+.share-feedback{border-bottom:1px solid var(--border);color:#f4e7dd}
+.share-feedback input{background:#1d1721;border:1px solid #65516e;color:#f4e7dd}
+
+@font-face{font-family:WorldPally;src:url("world-theme-assets/pally.woff2") format("woff2");font-display:swap}
+:root{color-scheme:dark;--world-deep:#1d1721;--world-panel:#302638;--paper:#251f2b;--white:#302638;--card:#302638;--border:#67516e;--red:#ffb68d;--bg:#251f2b;--panel:#302638;--ink:#f4e7dd;--text:#f4e7dd;--muted:#bba5c6;--line:#67516e;--lime:#ffc494;--accent:#ffc494;--orange:#ffc494;--purple:#cfacd9;--soft:#3a2c43;--sidebar:#1d1721;--green:#bbd4b2;--error:#ffaaa4;--warn:#f4c392;font-family:WorldPally,'PingFang SC','Microsoft YaHei',sans-serif}
+body{background:radial-gradient(ellipse at 5% 0%,#7b405635,transparent 50%),#251f2b;color:#f4e7dd}
+body::selection{background:#ffc494;color:#251f2b}
+.sidebar{background:linear-gradient(#251f2bf5,#251f2bf0),url('world-theme-assets/scene.webp') center bottom/auto 100%;color:#f4e7dd;border-right:1px solid #79608460}
+.sidebar select{background:#352b40;color:#f4e7dd;border-color:#79608485}
+.sidebar nav button,.nav button{border-radius:4px;border:1px solid transparent;color:#ccb6d1;transition:background .2s,border-color .2s,transform .2s}
+.sidebar nav button.active,.nav button.active{background:#75475f;color:#ffead4;border-color:#bc899c;box-shadow:0 3px 0 #1d1721}
+.sidebar nav button.active span,.nav button.active svg{color:#ffcf9d}
+.sidebar nav button:hover,.nav button:hover{background:#5b3b53;color:#fff0df}
+.brand-mark,.brand-icon{background:#ffc494;color:#39213a;border-radius:5px;box-shadow:0 4px 0 #845364}
+.brand small,.brand b>span{color:#bba5c6}
+.topbar{background:#251f2bf0;border-color:#67516e70;backdrop-filter:blur(15px)}
+button,input,textarea,select{font-family:inherit}
+input,textarea,select{color:#f4e7dd;accent-color:#ffc494}
+input::placeholder,textarea::placeholder{color:#ac93b6;opacity:1}
+.button,.btn,button:not(.icon-button):not(.icon):not(.small-link){border-radius:5px}
+.button.dark,.button.primary,.button.lime,.btn-primary,button.primary,.primary,.download-button,.play-button{background:#ffc494;color:#39213a;border-color:#ffc494;box-shadow:0 3px 0 #845364}
+.button.dark:hover,.button.primary:hover,.button.lime:hover,.btn-primary:hover,button.primary:hover,.primary:hover,.download-button:hover,.play-button:hover{background:#ffdfaf;color:#39213a}
+.brand-mark,.brand-icon,mark{color:#39213a}
+.panel,.issue-card,.source-tile,.copy-line,.copy-inspector,.shot-card,.record-card,.exercise-card,.composer,.settings-panel{border-color:#79608455;box-shadow:0 10px 30px #170f2120;border-radius:6px}
+.workflow{border-radius:5px;border-color:#79608470;background:#302638}
+.workflow .current,.workflow button.current,.copy-filters button[aria-pressed=true],.choice button.active,.presets button.active{background:#75475f;color:#ffe6cc;border-color:#bc899c}
+.workflow .current b,.workflow .current .step-number{color:#ffe6cc}
+.button:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid #ffc494;outline-offset:3px}
+dialog{background:#251f2b;color:#f4e7dd;border-color:#9876a266;border-radius:7px;box-shadow:0 25px 100px #160d2580}
+dialog::backdrop{background:#130d1cca;backdrop-filter:blur(8px)}
+#toast{background:#51364f;color:#ffe7d1;border:1px solid #9876a2}
+.top-actions .button,.header-actions button,.view-switch button{transition:background .2s,transform .2s}
+.top-actions .button:hover,.header-actions button:hover{transform:translateY(-1px)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+
+ .effect-card.active{background:#5e3d55;border-color:#b78dba;box-shadow:0 4px 0 #1d1721}.effect-card.active::before{background:#ffc494}.effect-icon{background:#44314e;color:#d7b3dd}.active .effect-icon{background:#ffc494;color:#39213a}.view-switch{background:#201926}.view-switch .selected{background:#70465e;color:#ffe5ca}.settings-panel{background:#302638}.play-button{color:#39213a}.download-button{color:#39213a}.effect-description{background:#302638;color:#c2a8cb}.brand-mark{background:#ffc494;color:#39213a}.player-wrap{background:#16121c}.player-wrap video,.player-wrap canvas{filter:none}.live-badge{background:#47354b;color:#ffdbb5}.beat-row button:hover{background:#65445d}.loop-button.on{color:#ffdbb5;border-color:#bb8c9e}.share-feedback{background:#302638}
